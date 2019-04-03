@@ -26,7 +26,7 @@ gabor.DistanceFromFixationDegree = 8;   % visual angle degree
 gabor.DistanceFromFixationPixel = deg2pix(gabor.DistanceFromFixationDegree,viewingDistance,screenXpixels,displaywidth);  %
 
 % internal motion of gabor drift speed  frame
-gabor.InternalDriftCyclesPerSecond = 4; % 3 Hz  in lisi    0 in no illusion 4 in all the experiments
+gabor.InternalDriftCyclesPerSecond = 3; % 3 Hz  in lisi    0 in no illusion 4 in all the experiments
 gabor.InternalDriftCyclesPerFrame = gabor.InternalDriftCyclesPerSecond * 360;
 % InternalDriftPhaseIncrPerFrame = InternalDriftCyclesPerFrame/framerate; %degree per frame
 % actual speed x = 1 framePerSec   y = x / xgaborFactor
@@ -65,17 +65,17 @@ gabor.preContrastMultiplier = 0.5;
     gabor.backgroundOffset, gabor.disableNorm, gabor.preContrastMultiplier);
 
 % gabor moving path length
-gabor.pathLengthDegree = 3; % dva
+gabor.pathLengthDegree = 3.5; % dva
 gabor.pathLengthPixel = deg2pix(gabor.pathLengthDegree,viewingDistance,screenXpixels,displaywidth);
-gabor.stimulusTime = gabor.pathLengthPixel/framerate; %1;   % length is 1 * 60 frame  60 pixel
+% gabor.stimulusTime = gabor.pathLengthPixel/framerate; % length is 1 * 60 frame  60 pixel
 % stimulusTime = 1;
 
 
-
-
 % gabor moving speed
-gabor.Speed = 2; % dva/sec
-gabor.SpeedPixels = deg2pix(gabor.Speed,viewingDistance,screenXpixels,displaywidth);
-gabor.SpeedFrame = gabor.SpeedPixels/framerate;
+gabor.Speed = 2; % dva/sec   2 dva in all the experiment 
+gabor.SpeedPixel = deg2pix(gabor.Speed,viewingDistance,screenXpixels,displaywidth);
+gabor.SpeedFrame = gabor.SpeedPixel/framerate;
+
+gabor.stimulusTime = gabor.pathLengthPixel/gabor.SpeedPixel; %1;   
 
 end

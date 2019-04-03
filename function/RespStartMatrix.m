@@ -1,13 +1,17 @@
 % result Matrix setting
 % all the results start Matrix []
-function   [responseVector,intervalTimesVector,TrialAll,BlockAll,conditionAll,responseTimeVector,lineAngleAll,gaborDistanceFromFixationDegreeAll] = RespStartMatrix();
-responseVector = []; %
+function   all = RespStartMatrix()
+all.responseVector = []; %
 % Make a vector to record the interval time for each trial
-intervalTimesVector = []; % reshape(zeros(trialNumber,blockNumber),[],1);
-TrialAll = [];
-BlockAll = [];
-conditionAll = [];
-responseTimeVector = [];
-lineAngleAll = [];
-gaborDistanceFromFixationDegreeAll = [];
+all.intervalTimesVector = []; % reshape(zeros(trialNumber,blockNumber),[],1);
+all.dotLocaRand = [];
+all.dotXpos = [];
+all.dotYpos = [];
+all.Trial = [];
+all.Block = [];
+all.condition = [];
+all.responseTimeVector = [];
+all.lineAngle = [];
+all.gaborDistanceFromFixationDegree = [];
+all.orientation = [];
 end

@@ -4,7 +4,7 @@
 clear all;
 addpath '../function';
 % decide analysis which distance 
-mark = 2;
+mark = 1;
 
 if mark == 1
     cd '../data/GaborDrift/illusionDegreeSpec/0.5dva'
@@ -32,11 +32,12 @@ for sbjnum = 1:length(sbjnames)
     plot(intervalTimesMatSingle*1000,proporPerc(sbjnum,:)*100);
     hold on;
 end
-performance
+performance;
 % hold on;
 % 
 % plot(intervalTimesMatSingle*1000,proporPerc*100);
 hold on;
+
 plot(intervalTimesMatSingle*1000,mean(proporPerc,1)*100,'r','LineWidth',3);
 % plot(meanReactionTime);
 
@@ -44,9 +45,9 @@ plot(intervalTimesMatSingle*1000,mean(proporPerc,1)*100,'r','LineWidth',3);
 proporPerc_ste = ste(proporPerc,1);
 % bar(1:length(intervalTimesMatSingle),mean(proporPerc,2),'r','BarWidth',0.2);
 errorbar(intervalTimesMatSingle*1000,mean(proporPerc,1)*100,proporPerc_ste*100,'r.');
-
+[p,tbl,stats] = anova1(proporPerc);
 axis([-10 400 0 100]);
-title('proportion of apparent motion from the end of perceived path(0.5dva)','FontSize',40);
+title('proportion of apparent motion from the end of perceived path(1.5dva)','FontSize',40);
 xlabel('interval time between illusion and test gabor(ms)','fontSize',30);
 ylabel({'proportion of apparent motion from the end of perceived path(%)';'  << more from physical      more from perceived  >> '},'FontSize',20);
 legend(sbjnames,'Location','northeast')
