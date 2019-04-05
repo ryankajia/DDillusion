@@ -9,7 +9,7 @@ mark = 1;
 % for test flash apparent motion line adjust
 if mark == 1
     cd '../../data/GaborDrift/flash_lineAdjust/AP_angle'
-    sbjnames = {'huijiahan'}; % 'huijiahan','lucy','xiahuan','gaoyige'
+    sbjnames = {'lucy'}; % 'huijiahan','lucy','xiahuan','gaoyige'
     lineAngleColumn = 7;
 elseif mark == 2
     cd '../../data/GaborDrift/flash_lineAdjust/AP_angle_7_10dva'
@@ -120,19 +120,9 @@ for sbjnum = 1:length(sbjnames)
             for delay = 1:8
                 % internal drift rightward
                 if ward == 1
-%                     if LineAngle_ave(delay,ward) < 0
-% %                     angle devide the physical angle
-%                     Physi_prop_temp(delay,ward) = 1/2 - abs(LineAngle_ave(delay,ward)/ang2radi(meanSubIlluDegree(ward)));
-%                     elseif LineAngle_ave(delay,ward) > 0
                         Physi_prop_temp(delay,ward) = 1/2 + (LineAngle_ave(delay,ward)/ang2radi(meanSubIlluDegree(ward)));
-%                     end
-                    % internal drift leftward
                 elseif ward == 2
-%                     if LineAngle_ave(delay,ward) > 0
                     Physi_prop_temp(delay,ward) = 1/2 - (LineAngle_ave(delay,ward)/ang2radi(meanSubIlluDegree(ward)));
-%                     elseif LineAngle_ave(delay,ward) < 0
-%                         Physi_prop_temp(delay,ward) = 1/2 + abs(LineAngle_ave(delay,ward)/ang2radi(meanSubIlluDegree(ward)));
-%                     end       
                 end
             end
         end
@@ -148,9 +138,9 @@ for sbjnum = 1:length(sbjnames)
     
 % end
 if mark == 1 || 2
-    plot(intervalTimesMatSingle*1000,mean(Physi_prop,2)*100,'b');
+    plot(intervalTimesMatSingle*1000,mean(Physi_prop(:,sbjnum),2)*100,'b');
 elseif mark == 4 || 3
-    plot(intervalTimesMatSingle*1000,mean(Physi_prop,2)*100,'r');
+    plot(intervalTimesMatSingle*1000,mean(Physi_prop(:,sbjnum),2)*100,'r');
 end
 end
 % Physi_prop_ste = ste(Physi_prop,2);
